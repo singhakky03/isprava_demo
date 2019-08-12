@@ -1,6 +1,7 @@
 class Warehouse < ApplicationRecord
 	
 	has_many :products, dependent: :destroy
+	belongs_to :product_detail
 	
 	before_create :set_wh_code
 	

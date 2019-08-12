@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
 	belongs_to :warehouse
+	belongs_to :product_detail
 
 	before_create :set_sku_code
 
