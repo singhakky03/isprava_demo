@@ -1,2 +1,11 @@
-%h1 Products#new
-%p Find me in app/views/products/new.html.haml
+= form_with scope: :product, local: true do |form|
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title
+  %p
+    = form.label :text
+    %br/
+    = form.text_area :text
+  %p
+    = form.submit
