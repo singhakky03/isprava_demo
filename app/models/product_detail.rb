@@ -1,6 +1,4 @@
 class ProductDetail < ApplicationRecord
-	has_many :products
-	has_one :warehouse, dependent: :destroy
-
-
+	belongs_to :product
+	belongs_to :warehouse
 end
