@@ -1,2 +1,31 @@
-%h1 Products#index
-%p Find me in app/views/products/index.html.haml
+.row
+  .col-md-8
+    %h3.sub-header Events List
+  .col-md-4
+    = link_to "Add New Product", new_product_path, :class => "btn btn-primary"
+    =# link_to "New User", new_user_path, :class => "btn btn-success"
+    =# link_to "All Users", users_path, :class => "btn btn-info"
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th No.
+        %th SKU
+        %th Product Name
+        %th Warehouse
+        %th Action
+    %tbody
+      - i = 0
+      - @products.each do |product|
+        - i = i + 1
+        %tr
+          %td
+            = i
+          %td
+            = product.sku_code
+          %td
+            = product.name
+          %td
+            = "#{product.warehouse.name}(#{product.product_detail.try(:item_count)})"
+          %td
+            = link_to "Edit", edit_product_path(product)
