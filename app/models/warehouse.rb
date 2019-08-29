@@ -19,7 +19,7 @@ class Warehouse < ApplicationRecord
 	end
 
 	def set_threshold
-		 product_detail = ProductDetail.create(low_item_threshold: 10, item_count: 0)
+		product_detail = ProductDetail.create(low_item_threshold: 10, item_count: 0, warehouse_id: self.id)
 	end
 
 end

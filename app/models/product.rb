@@ -3,8 +3,7 @@ class Product < ApplicationRecord
 	has_many :product_details
 
 	before_create :set_sku_code
-	#after_create :set_product_detail
-
+	
 	validates_presence_of :name, :price
 
 	private
