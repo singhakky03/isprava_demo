@@ -1,10 +1,10 @@
 class Warehouse < ApplicationRecord
 	
-	has_many :products, dependent: :destroy
-	has_one :product_detail, dependent: :destroy
+	has_many :product_details
+	has_many :products, through: :product_details
 	
 	before_create :set_wh_code
-	after_commit :set_threshold, on: :create
+	after_create :set_threshold #, on: :create
 	
 	validates_presence_of :name, :pincode
 	validates :wh_code, uniqueness: true
@@ -19,7 +19,7 @@ class Warehouse < ApplicationRecord
 	end
 
 	def set_threshold
-		ProductDetail.create(low_item_threshold: 10, warehouse_id: self.id)
+		 product_detail = ProductDetail.create(low_item_threshold: 10, item_count: 0)
 	end
 
 end
